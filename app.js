@@ -39,5 +39,5 @@ app.get('/search', (req, res) => {
 
 // 啟動伺服器並監聽
 app.listen(port, () => {
-  console.log(`successfully listening on http://localhost:${port}`)
+  console.log(`app.js listening on http://localhost:${port}`)
 })

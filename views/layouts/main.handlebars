@@ -6,13 +6,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  {{!-- 在head中放入css設定 include css files here --}}
-  {{!-- 一旦鍵入link後按tab鍵會自動增生設定碼 --}}
-  {{!-- 需將檔案路徑及指定檔案鍵入=> /stylesheets/bootstrap.css --}}
+  <title>Restaurant List</title>
+  
   <link rel="stylesheet" href="/stylesheets/bootstrap.css">
   <link rel="stylesheet" href="/stylesheets/style-index-page.css">
   <link rel="stylesheet" href="/stylesheets/style-show-page.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
 </head>
 
@@ -24,7 +23,7 @@
         <a class="navbar-brand" href="/">
           <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
             width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
-          我最愛的餐廳清單
+          Restaurant List
         </a>
       </div>
     </nav>
@@ -32,12 +31,8 @@
     <div class="banner"></div>
   </header>
 
-  {{!-- partial templates will replace here as "body"三花括 --}}
   {{{ body }}}
 
-
-  {{!-- 為了確保整個網頁的程式碼都載入完畢，再執行javascript的檔案，會將js載入的設定放在body中的最後一行 --}}
-  {{!-- 一旦鍵入script:src後按tab鍵會自動增生設定碼 --}}
   <script src="/javascripts/popper.js"></script>
   <script src="/javascripts/bootstrap.js"></script>
   <script src="https://kit.fontawesome.com/cab0b4016d.js" crossorigin="anonymous"></script>
