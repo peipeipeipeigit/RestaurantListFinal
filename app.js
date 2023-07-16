@@ -1,8 +1,8 @@
 // basic setting
 const express = require('express')
 const session = require('express-session')
-const usePassport = require('./config/passport')
-const flash = require('connect-flash')
+// const usePassport = require('./config/passport')
+// const flash = require('connect-flash')
 const exphbs = require('express-handlebars')
 const app = express()
 const port = process.env.PORT || 3000

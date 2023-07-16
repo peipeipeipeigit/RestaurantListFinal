@@ -1,8 +1,8 @@
 const express = require('express')
-const { route } = require('.')
+const { route } = require('..')
 const router = express.Router()
 
-const Restaurant = require('../models/restaurant')
+const Restaurant = require('../../models/restaurant')
 
 
 // post a restaurant
