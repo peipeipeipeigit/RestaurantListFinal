@@ -9,7 +9,7 @@ const Restaurant = require('../models/restaurant')
 router.get('/restaurants/new', (req, res) => {
   res.render('new')
 })
-router.post('/restaurants', (req, res) => {
+router.post('/restaurants/new', (req, res) => {
   Restaurant.create(req.body)
     .then(() => res.redirect('/'))
     .catch(err => console.log(err))
