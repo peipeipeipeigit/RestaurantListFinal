@@ -25,8 +25,6 @@ app.set('view engine', 'handlebars')
 //指定靜態檔案static file的文件
 app.use(express.static('public'))
 
-
-
 // 啟動伺服器並監聽
 app.listen(port, () => {
   console.log(`app.js is listening on http://localhost:${port}`)
