@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
 require('./config/mongoose.js')
 
 //基礎文件：載入json文件
-const restaurantList = require('./restaurant.json')
+const restaurants = require('./restaurant.json')
 
 //指定template engine的文件
 app.engine('handlebars', exphbs.engine({ defaultLayouts: 'main' }))
