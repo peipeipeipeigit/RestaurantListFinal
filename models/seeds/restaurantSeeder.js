@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== 'production') {
 const db = require('../../config/mongoose')
 
 // require restaurant model
-const Restaurant = require('..restaurant.js')
+const Restaurant = require('../restaurant')
 const User = require('../user')
 const restaurantData = require('../../restaurant.json')
 
@@ -29,7 +29,7 @@ db.once('open', () => {
       const userId = user._id
       const { id, name, name_en, category, rating } = restaurantData.results
       return Promise.all(Array.from(
-        { length: 10 },
+        { length: restaurantData.results.length },
         (_, i) => Restaurant.create({
           id,
           name,
@@ -37,8 +37,7 @@ db.once('open', () => {
           category,
           rating
         })
-      )
-      )
+      ))
         .then(() => {
           console.log('done.')
           process.exit()
