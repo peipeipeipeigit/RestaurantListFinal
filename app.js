@@ -19,11 +19,13 @@ require('./config/mongoose.js')
 const restaurants = require('./restaurant.json')
 
 //指定template engine的文件
-app.engine('handlebars', exphbs.engine({ defaultLayouts: 'main' }))
-app.set('view engine', 'handlebars')
+app.engine('hbs', exphbs.engine({ defaultLayouts: 'main', extname: '.hbs' }))
+app.set('view engine', 'hbs')
 
 //指定靜態檔案static file的文件
 app.use(express.static('public'))
+
+app.use(routes)
 
 // 啟動伺服器並監聽
 app.listen(port, () => {
