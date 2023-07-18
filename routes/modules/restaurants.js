@@ -6,8 +6,10 @@ const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 const restaurantData = require('../../restaurant.json')
 
+
+
 // get specific restaurant
-router.get('/:restaurant_id', (req, res) => {
+router.get('/browse/:restaurant_id', (req, res) => {
   console.log(req.params.restaurant_id )
   const restaurant = restaurantData.results.find(
     restaurant => restaurant.id.toString() === req.params.restaurant_id
@@ -21,11 +23,11 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/new', (req, res) => {
-  Restaurant.create(req.body)
-    .then(() => res.redirect('/'))
-    .catch(err => console.log(err))
+  res.render('index')
+  // Restaurant.create(req.body)
+  //   .then(() => res.redirect('/'))
+  //   .catch(err => console.log(err))
 })
-
 
 // edit a restaurant
 router.get('/:restaurant_id/edit', (req, res) => {
