@@ -4,6 +4,14 @@ const router = express.Router()
 
 const Restaurant = require('../../models/restaurant')
 
+// get specific restaurant
+router.get('/restaurants/:restaurant_id', (req, res) => {
+  console.log(req.params.restaurant_id)
+  const restaurant = restaurants.results.find(
+    restaurant => restaurant.id.toString() === req.params.restaurant_id
+  )
+  res.render('show', { restaurants: restaurant })
+})
 
 // post a restaurant
 router.get('/restaurants/new', (req, res) => {

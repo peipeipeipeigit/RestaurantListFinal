@@ -21,7 +21,7 @@
       {{#each restaurants}}
       <div class="col-4">
         <div class="card px-1">
-          <img class="card-img-top" src=`{{this.image}}` alt=`{{this.name}}`>
+          <img class="card-img-top" src='{{this.image}}' alt=`{{this.name}}`>
           <div class="card-body p-3">
             <h6 class="card-title mb-1">{{this.name}}</h6>
             <h6 class="card-title mb-1">{{this.name_en}}</h6>
@@ -38,7 +38,7 @@
         <div class="d-flex justify-content-end mt-1 mb-5">
           <a href="/restaurants/:restaurant_id/edit"><button type="button"
               class="btn btn-link px-2 py-0">Edit</button></a>
-          <a href=`/restaurants/{{this.id}}`><button type="button" class="btn btn-link px-2 py-0">Detail</button></a>
+          <a href='/restaurants/{{this.id}}'><button type="button" class="btn btn-link px-2 py-0">Detail</button></a>
           <a href="/restaurants/:restaurant_id"><button type="button" class="btn btn-outline-danger px-2 py-0">Delete</button></a>
         </div>
       </div>

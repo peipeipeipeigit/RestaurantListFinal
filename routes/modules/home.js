@@ -7,21 +7,13 @@ const restaurantData = require('../../restaurant.json')
 
 // get all the restaurants
 router.get('/', (req, res) => {
-  res.render('index')
-  // Restaurant.find({})
-  //   .lean()
-  //   .then(restaurants => res.render('index', { restaurants: restaurantData.results }))
-  //   .catch(err => console.log(err))
+  Restaurant.find({})
+    .lean()
+    .then(restaurants => res.render('index', { restaurants: restaurantData.results }))
+    .catch(err => console.log(err))
 })
 
-// // get specific restaurant
-// router.get('/restaurants/:restaurant_id', (req, res) => {
-//   console.log(req.params.restaurant_id)
-//   const restaurant = restaurants.results.find(
-//     restaurant => restaurant.id.toString() === req.params.restaurant_id
-//   )
-//   res.render('show', { restaurants: restaurant })
-// })
+
 
 // // search
 // router.get('/search', (req, res) => {
