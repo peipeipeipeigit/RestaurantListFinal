@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 db.on('error', () => {
-  console.log('mongodb error!')
+  console.log('messages from config/mongoose.js: mongodb error!')
 })
 db.once('open', () => {
   console.log('messages from config/mongoose.js: mongodb connected!')
