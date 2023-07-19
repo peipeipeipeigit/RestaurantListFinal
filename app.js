@@ -39,6 +39,7 @@ app.use((req, res, next) => {
   next()
 })
 
+usePassport(app)
 
 app.use(routes)
 
