@@ -1,5 +1,8 @@
 {{!-- 新增餐廳頁面 --}}
-<h1 class="position-absolute top-50 start-50 translate-middle text-white">新增餐廳資訊</h1>
+<h1 class="position-absolute top-50 start-50 translate-middle text-white ">
+  <p class="d-flex justify-content-center">新增餐廳資訊</p>
+  <p class="d-flex justify-content-center">Add New Restaurant</p>
+</h1>
 <div class="container">
   <form action="/restaurants/new" method="POST" style="display: inline;" class="d-flex justify-content-center">
     <div class="row col-6 mt-3">
@@ -19,10 +22,11 @@
       <div class="input-group my-3">
         <label class="input-group-text" for="inputGroupSelect01 ">類別</label>
         <select class="form-select" id="inputGroupSelect01">
+          
           <option selected>Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          {{#each categories}}
+          <option value="1">{{ this.name }}</option>
+         {{/each}}
         </select>
       </div>
       <div class="input-group my-3">

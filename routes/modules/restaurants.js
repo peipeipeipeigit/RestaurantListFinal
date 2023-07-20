@@ -4,13 +4,14 @@ const router = express.Router()
 
 
 const Restaurant = require('../../models/restaurant')
+const Category = require('../../models/category')
 const restaurantData = require('../../restaurant.json')
 
 
 
 // get specific restaurant
 router.get('/browse/:restaurant_id', (req, res) => {
-  console.log(req.params.restaurant_id )
+  console.log(req.params.restaurant_id)
   const restaurant = restaurantData.results.find(
     restaurant => restaurant.id.toString() === req.params.restaurant_id
   )
@@ -19,7 +20,10 @@ router.get('/browse/:restaurant_id', (req, res) => {
 
 // post a restaurant
 router.get('/new', (req, res) => {
-  res.render('new')
+  Category.find({})
+    .lean()
+    .then(categories => res.render('new', { categories }))
+    .catch(err => console.log(err))
 })
 
 router.post('/new', (req, res) => {

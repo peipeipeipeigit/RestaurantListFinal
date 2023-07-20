@@ -1,5 +1,5 @@
 <div class="container search-bar">
-<a href="/restaurants/new" class="btn btn-primary mb-3"><button>Add New Restaurant</button></a>
+
   <!-- search bar -->
   <div class="search-bar-outer">
     <div class="search-bar-inner">
@@ -16,7 +16,12 @@
   </div>
 
   <!-- restaurant list -->
-  <div class="container mt-5">
+  <div class="container mt-3">
+    <div class="row col-2">
+      <a href="/restaurants/new" class="btn btn-outline-secondary mx-3 mb-3">Add New
+          Restaurant</a>
+    </div>
+
     <div class="row">
       {{#each restaurants}}
       <div class="col-4">
@@ -38,8 +43,10 @@
         <div class="d-flex justify-content-end mt-1 mb-5">
           <a href="/restaurants/:restaurant_id/edit"><button type="button"
               class="btn btn-link px-2 py-0">Edit</button></a>
-          <a href='/restaurants/browse/{{this.id}}'><button type="button" class="btn btn-link px-2 py-0">Detail</button></a>
-          <a href="/restaurants/:restaurant_id"><button type="button" class="btn btn-outline-danger px-2 py-0">Delete</button></a>
+          <a href='/restaurants/browse/{{this.id}}'><button type="button"
+              class="btn btn-link px-2 py-0">Detail</button></a>
+          <a href="/restaurants/:restaurant_id"><button type="button"
+              class="btn btn-outline-danger px-2 py-0">Delete</button></a>
         </div>
       </div>
       {{/each}}

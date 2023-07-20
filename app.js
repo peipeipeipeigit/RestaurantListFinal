@@ -22,6 +22,8 @@ app.set('view engine', 'hbs')
 // Third-party middleware
 app.use(express.static('public'))
 
+app.use(express.urlencoded({ extended: true }))
+
 app.use(methodOverride('_method'))
 
 app.use(session({
