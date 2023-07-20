@@ -31,7 +31,7 @@ db.once('open', () => {
   // 使用 Category.create 建立 category 種子資料
   Category.create(categoryObjects)
     .then(() => {
-      console.log('CategorySeeder建立成功！');
+      console.log('CategorySeeder建立成功!');
       process.exit();
     })
     .catch(err => {

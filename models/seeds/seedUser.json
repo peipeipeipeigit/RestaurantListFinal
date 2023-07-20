@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "email": "user1@example.com",
+      "password": "12345678",
+      "restaurantsID_owned": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "email": "user2@example.com",
+      "password": "12345678",
+      "restaurantsID_owned": [
+        4,
+        5,
+        6
+      ]
+    }
+  ]
+}

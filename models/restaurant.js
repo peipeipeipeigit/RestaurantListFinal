@@ -22,6 +22,7 @@ const restaurantSchema = new Schema({
     type: String,
     required: true
   },
+  // 建立關聯
 })
 
 module.exports = mongoose.model('Restaurant', restaurantSchema)

@@ -23,7 +23,6 @@ router.post('/register', (req, res) => {
   const errors = []
   if (!email || !password || !confirmPassword) {
     errors.push({ message: '請填入必填欄位。' })
-    console.log(errors)
   }
   if (password !== confirmPassword) {
     errors.push({ message: '密碼與確認密碼不相符！' })
@@ -38,8 +37,7 @@ router.post('/register', (req, res) => {
     })
   }
   User.findOne({ email }).then(user => {
-    if (user) {      
-      console.log(errors)
+    if (user) {
       return res.render('register', {
         errors,
         name,
