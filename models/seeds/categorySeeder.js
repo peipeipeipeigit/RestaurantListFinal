@@ -4,22 +4,20 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const db = require('../../config/mongoose')
 
-
+// require Schema and data json
 const Category = require('../category')
 const restaurantData = require('../../restaurant.json')
 let categories = []
 
+// 將json資料中的餐廳類別提取出來，並且不重複
 function buildCategory() {
-  // 將json資料中的餐廳類別提取出來，並且不重複
   const data = restaurantData.results;
   const categoriesSet = new Set();
   for (const restaurant of data) {
     categoriesSet.add(restaurant.category);
   }
   categories = Array.from(categoriesSet);
-  console.log(categories); // 顯示所有不重複的 category
 }
-
 
 db.once('open', () => {
   buildCategory()
