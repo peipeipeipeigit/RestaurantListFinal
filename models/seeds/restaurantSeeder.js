@@ -51,9 +51,8 @@ db.once('open', () => {
         .then((arr) => {
           // 建立餐廳種子資料
           Restaurant.create(...arr)
-            .then((fulfilled) => {
-              console.log('restaurantSeeder done.')              
-              return fulfilled
+            .then(() => {
+              console.log('restaurantSeeder done.')                          
             })
             .catch((err) => {
               console.error('建立 restaurantSeeder時發生錯誤:', err)
@@ -62,6 +61,7 @@ db.once('open', () => {
     })
   ).then(() => {
     console.log('all done')
+    // process.exit() 
   }).catch((err) => {
     console.error(err)
   })
