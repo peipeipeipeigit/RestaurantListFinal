@@ -3,7 +3,7 @@ const router = express.Router()
 require('../../config/mongoose')
 
 const Restaurant = require('../../models/restaurant')
-const restaurantData = require('../../restaurant.json')
+const restaurantData = require('../../models/seeds/restaurant.json')
 
 // get all the restaurants
 router.get('/', (req, res) => {

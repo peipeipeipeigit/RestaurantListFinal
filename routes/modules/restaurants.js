@@ -5,7 +5,7 @@ const router = express.Router()
 
 const Restaurant = require('../../models/restaurant')
 const Category = require('../../models/category')
-const restaurantData = require('../../restaurant.json')
+const restaurantData = require('../../models/seeds/restaurant.json')
 
 
 
