@@ -12,7 +12,7 @@ const Restaurant = require('../restaurant')
 const User = require('../user')
 
 // require seed data json
-const restaurantData = require('../../restaurant.json').results
+const restaurantData = require('./restaurant.json').results
 const seedUsersData = require('./seedUser.json').users
 
 db.once('open', () => {
