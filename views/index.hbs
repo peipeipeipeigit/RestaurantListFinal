@@ -19,7 +19,7 @@
   <div class="container mt-3">
     <div class="row col-2">
       <a href="/restaurants/new" class="btn btn-outline-secondary mx-3 mb-3">Add New
-          Restaurant</a>
+        Restaurant</a>
     </div>
 
     <div class="row">
@@ -41,12 +41,9 @@
         </div>
 
         <div class="d-flex justify-content-end mt-1 mb-5">
-          <a href="/restaurants/:restaurant_id/edit"><button type="button"
-              class="btn btn-link px-2 py-0">Edit</button></a>
-          <a href='/restaurants/browse/{{this.id}}'><button type="button"
-              class="btn btn-link px-2 py-0">Detail</button></a>
-          <a href="/restaurants/:restaurant_id"><button type="button"
-              class="btn btn-outline-danger px-2 py-0">Delete</button></a>
+          <a href="/restaurants/{{this.id}}/edit" class="btn btn-link px-2 py-0">Edit</a>
+          <a href='/restaurants/browse/{{this.id}}' class="btn btn-link px-2 py-0">Detail</a>
+          <a href="/restaurants/:restaurant_id" class="btn btn-outline-danger px-2 py-0">Delete</a>
         </div>
       </div>
       {{/each}}
