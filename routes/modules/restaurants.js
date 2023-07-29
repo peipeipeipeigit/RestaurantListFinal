@@ -6,7 +6,6 @@ const router = express.Router()
 // require Schema models
 const Restaurant = require('../../models/restaurant')
 const Category = require('../../models/category')
-const restaurant = require('../../models/restaurant')
 let theRestaurant  //為了在get edit頁中給Category.find使用
 
 // get specific restaurant
@@ -21,6 +20,7 @@ router.get('/browse/:restaurant_id', (req, res) => {
       })
     .catch(error => console.log(error))
 })
+
 
 // post a new restaurant
 router.get('/new', (req, res) => {
@@ -100,6 +100,7 @@ router.put('/:restaurant_id/edit', (req, res) => {
     .then(() => res.redirect(`/restaurants/browse/${restaurant_id}`))
     .catch(error => console.log(error))
 })
+
 
 // delete a restaurant
 router.delete('/:restaurant_id', (req, res) => {
