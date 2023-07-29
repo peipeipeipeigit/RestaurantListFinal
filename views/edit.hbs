@@ -4,25 +4,22 @@
   <p class="d-flex justify-content-center">Edit Restaurant</p>
 </h1>
 <div class="container">
-  <form action="/restaurants/:restaurant_id/edit" method="POST" style="display: inline;"
+  <form action="/restaurants/{{restaurant.id}}/edit?_method=PUT" method="POST" style="display: inline;"
     class="d-flex justify-content-center">
     <div class="row col-6 mt-3">
       <div class="input-group my-3">
         <span class="input-group-text" id="basic-addon1">餐廳名稱</span>
         <input type="text" class="form-control" aria-label="RestaurantName" value="{{restaurant.name}}"
-          aria-describedby="basic-addon1" required>
-      </div>
-      <div id="validationServerUsernameFeedback" class="invalid-feedback">
-        Please choose a username.
-      </div>
+          aria-describedby="basic-addon1" name="name">
+      </div>     
       <div class="input-group my-3">
         <span class="input-group-text" id="basic-addon1">餐廳英文名稱</span>
         <input type="text" class="form-control" value="{{restaurant.name_en}}" aria-label="Username"
-          aria-describedby="basic-addon1" for="validationCustom01" required>
+          aria-describedby="basic-addon1" for="validationCustom01" name="name_en" required>
       </div>
       <div class="input-group my-3">
         <label class="input-group-text" for="inputGroupSelect01">類別</label>
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" name="category">
           <option selected>{{restaurant.category}}</option>
 
           {{#each categories}}
@@ -32,22 +29,24 @@
       </div>
       <div class="input-group my-3">
         <span class="input-group-text" id="basic-addon1">地址</span>
-        <textarea class="form-control col-6" aria-label="With textarea">{{restaurant.location}}</textarea>
+        <textarea class="form-control col-6" aria-label="With textarea" name="location">{{restaurant.location}}</textarea required>
       </div>
       <div class="input-group my-3">
         <span class="input-group-text" id="basic-addon1">電話</span>
         <input type="text" class="form-control" value="{{restaurant.phone}}" aria-label="phoneNumber"
-          aria-describedby="basic-addon1">
+          aria-describedby="basic-addon1" name="phone" required>
       </div>
       <div class="input-group my-3">
         <span class="input-group-text">簡介</span>
-        <textarea class="form-control col-6" aria-label="With textarea">{{restaurant.description}}</textarea>
+        <textarea class="form-control col-6" aria-label="With textarea" name="description" required>{{restaurant.description}}</textarea>
       </div>
       <div class="my-3">
         <button type="submit" class="btn btn-outline-secondary" style="width:100%">
           儲存
         </button>
-      </div>
-    </div>
   </form>
+  <a href="/" class="btn btn-outline-secondary my-2" style="width:100%">
+    返回
+  </a>
+</div>
 </div>

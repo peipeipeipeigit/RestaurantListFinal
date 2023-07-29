@@ -10,10 +10,7 @@
         <span class="input-group-text" id="basic-addon1">餐廳名稱</span>
         <input type="text" class="form-control" placeholder="請輸入餐廳名稱" aria-label="RestaurantName"
           aria-describedby="basic-addon1" required>
-      </div>
-      <div id="validationServerUsernameFeedback" class="invalid-feedback">
-        Please choose a username.
-      </div>
+      </div>     
       <div class="input-group my-3">
         <span class="input-group-text" id="basic-addon1">餐廳英文名稱</span>
         <input type="text" class="form-control" placeholder="Restaurant En name" aria-label="Username"
@@ -22,11 +19,11 @@
       <div class="input-group my-3">
         <label class="input-group-text" for="inputGroupSelect01 ">類別</label>
         <select class="form-select" id="inputGroupSelect01">
-          
+
           <option selected>Choose...</option>
           {{#each categories}}
           <option value="1">{{ this.name }}</option>
-         {{/each}}
+          {{/each}}
         </select>
       </div>
       <div class="input-group my-3">
@@ -42,11 +39,12 @@
         <span class="input-group-text">簡介</span>
         <textarea class="form-control" aria-label="With textarea" placeholder="請輸入餐廳簡介"></textarea>
       </div>
-      <div class="my-3">
-        <button type="submit" class="btn btn-outline-secondary" style="width:100%">
-          新增
-        </button>
-      </div>
-    </div>
   </form>
+  <div class="my-3">
+    <button type="submit" class="btn btn-outline-secondary" style="width:100%">
+      新增
+    </button>
+  </div>
+</div>
+
 </div>
