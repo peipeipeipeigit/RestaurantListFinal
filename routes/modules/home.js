@@ -3,32 +3,13 @@ const router = express.Router()
 require('../../config/mongoose')
 
 const Restaurant = require('../../models/restaurant')
-const restaurant = require('../../models/restaurant')
-
 
 // get all the restaurants
-// router.get('/', (req, res) => {
-  
-//   Restaurant.find({ _id: _id })
-//     .lean()
-//     .then(
-//       restaurants => {
-//         res.render('index', { restaurants })
-//         console.log(restaurants)
-//       })
-//     .catch(error => console.log(error))
-    
-// })
-
 router.get('/', (req, res) => {
   const userId = req.user._id
   Restaurant.find({ userId })
     .lean()
-    .then(
-     
-      // restaurants => console.log(restaurants)
-      restaurants => res.render('index', { restaurants })
-    )
+    .then(restaurants => res.render('index', { restaurants }))
     .catch(error => console.error(error))
 })
 

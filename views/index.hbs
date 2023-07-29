@@ -43,7 +43,10 @@
         <div class="d-flex justify-content-end mt-1 mb-5">
           <a href="/restaurants/{{this.id}}/edit" class="btn btn-link px-2 py-0">Edit</a>
           <a href='/restaurants/browse/{{this.id}}' class="btn btn-link px-2 py-0">Detail</a>
-          <a href="/restaurants/:restaurant_id" class="btn btn-outline-danger px-2 py-0">Delete</a>
+          <form action="/restaurants/{{this.id}}?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-outline-danger px-1 py-0 mx-1">Delete</button>
+          </form>
+
         </div>
       </div>
       {{/each}}

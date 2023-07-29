@@ -1,18 +1,19 @@
+// db connection setting
 const express = require('express')
 const { route } = require('..')
 const router = express.Router()
 
+// require Schema models
 const Restaurant = require('../../models/restaurant')
 const Category = require('../../models/category')
-// const category = require('../../models/category')
-// const restaurant = require('../../models/restaurant')
-const restaurantData = require('../../models/seeds/restaurant.json').results
+const restaurant = require('../../models/restaurant')
+let theRestaurant  //為了在get edit頁中給Category.find使用
 
 // get specific restaurant
 router.get('/browse/:restaurant_id', (req, res) => {
   const { _id } = req.user
   const { restaurant_id } = req.params
-  return Restaurant.findOne({ id: restaurant_id })
+  return Restaurant.findOne({ id: restaurant_id, userId: _id })
     .lean()
     .then(
       (restaurants) => {
@@ -21,7 +22,7 @@ router.get('/browse/:restaurant_id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// post a restaurant
+// post a new restaurant
 router.get('/new', (req, res) => {
   Category.find({})
     .lean()
@@ -54,21 +55,23 @@ router.post('/new', (req, res) => {
 // edit a restaurant
 router.get('/:restaurant_id/edit', (req, res) => {
   const { restaurant_id } = req.params
-  let theRestaurant = [] //因為等下要給Category.find()用，所以先定義起來
-
-  Restaurant.findOne({ id: restaurant_id })
+  const { _id } = req.user
+  Restaurant.findOne({ id: restaurant_id, userId: _id })
     .lean()
     .then(
       (restaurant) => {
-        theRestaurant.push(restaurant)
-        // 針對點擊的restaurant，製作edit頁面中下拉選單的categories
-        return Category.find({ name: { $ne: theRestaurant[0].category } })
-          .lean()
+        // 更新theRestaurant資料
+        return theRestaurant = restaurant
       })
+    .then((restaurant) => {
+      // 針對點擊的restaurant，製作edit頁面中下拉選單的categories
+      return Category.find({ name: { $ne: theRestaurant.category } })
+        .lean()
+    })
     .then(categories => {
       // categories為上一個then中，Category.find()返回的值        
-      res.render('edit', { restaurant: theRestaurant[0], categories });
-      console.log('餐廳資料查詢完畢')
+      res.render('edit', { restaurant: theRestaurant, categories });
+      console.log('edit get 餐廳資料查詢完畢')
     })
     .catch((error) => {
       console.error(error);
@@ -79,8 +82,9 @@ router.put('/:restaurant_id/edit', (req, res) => {
   const { restaurant_id } = req.params
   const { name, name_en, category, location,
     phone, description } = req.body
+  const { _id } = req.user
 
-  return Restaurant.findOne({ id: restaurant_id })
+  return Restaurant.findOne({ id: restaurant_id, userId: _id })
     .then(restaurant => {
       restaurant.name = name
       restaurant.name_en = name_en
@@ -90,18 +94,22 @@ router.put('/:restaurant_id/edit', (req, res) => {
       restaurant.description = description
       return restaurant.save()
     })
+    .then((restaurant) => {
+      return theRestaurant = restaurant
+    })
     .then(() => res.redirect(`/restaurants/browse/${restaurant_id}`))
     .catch(error => console.log(error))
 })
 
-
 // delete a restaurant
 router.delete('/:restaurant_id', (req, res) => {
-  const { restaurantId } = req.params
-  Restaurant.findByIdAndDelete(restaurantId)
-    .then(() => res.redirect('/'))
-    .catch(err => console.log(err))
-})
+  const { restaurant_id } = req.params
+  const { _id } = req.user
 
+  Restaurant.findOne({ id: restaurant_id, userId: _id })
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
 
 module.exports = router
