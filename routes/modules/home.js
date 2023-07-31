@@ -13,14 +13,30 @@ router.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
-// // search
-// router.get('/search', (req, res) => {
-//   console.log('正確導向/search')
-//   const keyword = req.query.keyword
-//   const restaurants = restaurants.results.filter(
-//     restaurant => { return restaurant.name_en.toLowerCase().includes(keyword.toLowerCase()) || restaurant.name.includes(keyword) }
-//   )
-//   res.render('index', { restaurants, keyword })
-// })
+// search restaurants
+router.get('/search', (req, res) => {
+  const { _id } = req.user
+  const keyword = req.query.keyword
+  const trimKeyword = keyword.trim().toLowerCase()
+
+
+  if (!keyword) {
+    res.redirect('/')
+  } else {
+    Restaurant.find({ userId: _id })
+      .lean()
+      .then((restaurants) => {
+        return restaurants.filter(
+          restaurant =>
+            restaurant.name.toLowerCase().includes(trimKeyword) || restaurant.name_en.toLowerCase().includes(trimKeyword) || restaurant.category.includes(trimKeyword)
+        )
+      })
+      .then((restaurantFiltered) => {
+        res.render('index', { restaurants: restaurantFiltered, keyword })
+      })
+      .catch(err => console.log(err))
+  }
+})
+
 
 module.exports = router
