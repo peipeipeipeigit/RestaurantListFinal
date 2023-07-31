@@ -5,6 +5,10 @@ const FacebookStrategy = require('passport-facebook').Strategy
 
 const User = require('../models/user')
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 module.exports = app => {
   // 初始化 Passport 模組
   app.use(passport.initialize())
@@ -14,6 +18,7 @@ module.exports = app => {
   passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
     User.findOne({ email })
       .then(user => {
+        // console.log(user)
         if (!user) {
           return done(null, false, { message: 'That email is not registered!' })
         }
@@ -53,7 +58,9 @@ module.exports = app => {
   }))
   // 設定序列化與反序列化
   passport.serializeUser((user, done) => {
-    done(null, user.id)
+    done(null, user.id,
+      // console.log(user)
+      )
   })
   passport.deserializeUser((id, done) => {
     User.findById(id)
