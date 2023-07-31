@@ -1,5 +1,6 @@
 # 系統設定
 node_modules
+.vscode
 
 # 環境變數
 .env
